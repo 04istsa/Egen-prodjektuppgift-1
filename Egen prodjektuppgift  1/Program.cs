@@ -28,36 +28,62 @@ namespace Egen_prodjektuppgift__1
             
             switch (choseNum)
             {
-
+                   
                 case "1":
                         Console.WriteLine("Skriv ett tal mellan ett och tio");
-                    int num = int.Parse(Console.ReadLine());
-                    while (num != randNum )
+                        int num = 0;
+                        bool valid = false;
+                        valid = int.TryParse(Console.ReadLine(), out num);
+                         
+                          while (!valid)
+                        {
+                            Console.WriteLine("Du skrev in fle alternativ, försök igen");
+                            valid = int.TryParse(Console.ReadLine(), out num);
+                        }
+                        
+                    while (num != randNum)
                     {
-                            if (num > 10)
+
+                            if (num == randNum)
                             {
-                                Console.WriteLine("Du valde inte ett korrect alternativ");
+                                Console.WriteLine("Du vann");
+                                break;
+                            }
+                            else if (num < randNum)
+                            {
+                                Console.WriteLine("Du gissade för för lågt");
+                                Console.WriteLine("Gissa igen");
+                                valid = int.TryParse(Console.ReadLine(), out num);
+                                {
+                                    while (!valid)
+                                    {
+                                        Console.WriteLine("Du skrev fel alternativ, gissa igen");
+                                        valid = int.TryParse(Console.ReadLine(), out num);
+                                    }
+
+                                }
 
                             }
-                        if (num < randNum)
-                        {
-                            Console.WriteLine("Du gissade för för lågt");
-                            Console.WriteLine("Gissa igen");
-                            num = int.Parse(Console.ReadLine());
-                        }
-                        else
-                        {
-                            Console.WriteLine("Du gissade för högt");
-                            Console.WriteLine("Gissa igen");
+                            else if (num > randNum)
+                            {
+                                Console.WriteLine("Du gissade för högt");
+                                Console.WriteLine("Gissa igen");
+                                valid = int.TryParse(Console.ReadLine(), out num);
+                                while (!valid)
+                                {
+                                    Console.WriteLine("Du skrev fel alternativ, gissa igen");
+                                    valid = int.TryParse(Console.ReadLine(), out num);
+                                }
                             
 
+                            }
                             
-
-                        }
 
                     }
                     Console.WriteLine("Du vann");
-                    break;
+                    
+                        
+                        break;
                 case "2":
 
                     Console.WriteLine("Spelet går ut på att gissa på ett numer mellan ett och tio");
@@ -68,6 +94,13 @@ namespace Egen_prodjektuppgift__1
 
                 case "3":
                     break;
+
+
+
+                    default:
+                        Console.WriteLine("Du skrev inte ett gilgigt alternativ");
+                        break;
+
 
 
 
