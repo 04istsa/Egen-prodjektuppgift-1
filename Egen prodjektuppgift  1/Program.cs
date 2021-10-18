@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace Egen_prodjektuppgift__1
 {
@@ -37,6 +38,7 @@ namespace Egen_prodjektuppgift__1
                          
                           while (!valid)
                         {
+
                             Console.WriteLine("Du skrev in fle alternativ, försök igen");
                             valid = int.TryParse(Console.ReadLine(), out num);
                         }
@@ -46,12 +48,15 @@ namespace Egen_prodjektuppgift__1
 
                             if (num == randNum)
                             {
+                                Thread.Sleep(500);
                                 Console.WriteLine("Du vann");
                                 break;
                             }
                             else if (num < randNum)
                             {
+                                Thread.Sleep(500);
                                 Console.WriteLine("Du gissade för för lågt");
+                                Thread.Sleep(500);
                                 Console.WriteLine("Gissa igen");
                                 valid = int.TryParse(Console.ReadLine(), out num);
                                 {
@@ -66,11 +71,14 @@ namespace Egen_prodjektuppgift__1
                             }
                             else if (num > randNum)
                             {
+                                Thread.Sleep(500);
                                 Console.WriteLine("Du gissade för högt");
+                                Thread.Sleep(500);
                                 Console.WriteLine("Gissa igen");
                                 valid = int.TryParse(Console.ReadLine(), out num);
                                 while (!valid)
                                 {
+                                    Thread.Sleep(1000);
                                     Console.WriteLine("Du skrev fel alternativ, gissa igen");
                                     valid = int.TryParse(Console.ReadLine(), out num);
                                 }
